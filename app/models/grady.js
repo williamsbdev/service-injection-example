@@ -1,10 +1,13 @@
 import Ember from 'ember';
-import lamont from '../mixins/lamont';
+import { injectService, injectRepo } from '../utils/inject';
 
-export default Ember.Object.extend(lamont, {
+export default Ember.Object.extend({
+  fred: injectService(),
+  wat: injectRepo(),
 
   callService: function() {
-    this.dadOpinion();
+    this.get("fred").opinion();
+    this.get("wat").invoke();
   }
 
 });
